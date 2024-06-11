@@ -4,7 +4,13 @@ import Price from './Price';
 
 function ProductCard({ product }) {
   const { slug, title, description, price, images } = product.attributes;
-  const imageNode = images && images.length > 0 ? images[0] : null;
+  const imageNode = images && images.data && images.data.length > 0 ? images.data[0].attributes : null;
+  const imageUrl = imageNode ? `http://localhost:1337${imageNode.url}` : '';
+
+  console.log('Product:', product);
+  console.log('Image Node:', imageNode);
+  console.log('Image URL:', imageUrl);
+
 
   return (
     <Link href={`/products/${slug}`} legacyBehavior>
@@ -12,7 +18,7 @@ function ProductCard({ product }) {
         <div className="h-72 border-b-2 border-palette-lighter relative">
           {imageNode ? (
             <Image
-              src={imageNode.url}
+              src={imageUrl}
               alt={imageNode.altText || 'Product Image'}
               layout="fill"
               className="transform duration-500 ease-in-out hover:scale-110"

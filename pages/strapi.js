@@ -4,9 +4,9 @@ const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 export async function getAllProducts() {
   try {
-    const response = await axios.get(`${strapiUrl}/api/products`);
-    console.log('Response from Strapi:', response.data); // Verifica la estructura de la respuesta
-    return response.data.data; // Asegúrate de devolver la propiedad correcta
+    const response = await axios.get(`${strapiUrl}/api/products?populate=*`);
+    console.log('Response from Strapi:', response.data);
+    return response.data.data; 
   } catch (error) {
     console.error('Error fetching products:', error);
     return []
@@ -15,7 +15,7 @@ export async function getAllProducts() {
 
 export async function getProductSlugs() {
   try {
-    const response = await axios.get(`${strapiUrl}/api/products`);
+    const response = await axios.get(`${strapiUrl}/api/products?populate=*`);
     return response.data.data.map(product => ({ slug: product.attributes.slug }));
   } catch (error) {
     console.error('Error fetching product slugs:', error);
@@ -26,7 +26,7 @@ export async function getProductSlugs() {
 export async function getProduct(slug) {
   try {
     const response = await axios.get(`${strapiUrl}/api/products`, {
-      params: { filters: { slug: slug } }
+      params: { filters: { slug: slug },  populate: '*' }
     });
     return response.data.data[0];
   } catch (error) {
