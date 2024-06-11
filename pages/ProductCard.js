@@ -3,11 +3,17 @@ import Link from 'next/link';
 import Price from './Price';
 
 function ProductCard({ product }) {
-  const { slug, title, description, price, images } = product.attributes;
-  const imageNode = images && images.data && images.data.length > 0 ? images.data[0].attributes : null;
-  const imageUrl = imageNode ? `http://localhost:1337${imageNode.url}` : '';
+  const { slug, title, description, price, image } = product.attributes;
+
+  console.log('Product:', product); // Agrega este log
+  console.log('Images:', image); // Agrega este log
+
+
+  const imageNode = image && image.data && image.data.length > 0 ? image.data[0].attributes : null;
+  const imageUrl = imageNode ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${imageNode.url}` : '';
 
   console.log('Product:', product);
+  console.log('Images:', image);
   console.log('Image Node:', imageNode);
   console.log('Image URL:', imageUrl);
 
@@ -20,7 +26,7 @@ function ProductCard({ product }) {
             <Image
               src={imageUrl}
               alt={imageNode.altText || 'Product Image'}
-              layout="fill"
+              fill
               className="transform duration-500 ease-in-out hover:scale-110"
             />
           ) : (

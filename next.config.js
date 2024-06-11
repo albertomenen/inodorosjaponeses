@@ -5,7 +5,7 @@ module.exports = {
   },
   output: "standalone",
   images: {
-    domains: ['127.0.0.1'],
+    domains: ['localhost', '127.0.0.1'],
   },
   experimental: {
     appDir: true,

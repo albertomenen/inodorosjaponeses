@@ -14,14 +14,20 @@ export async function getAllProducts() {
 }
 
 export async function getProductSlugs() {
-  try {
-    const response = await axios.get(`${strapiUrl}/api/products?populate=*`);
-    return response.data.data.map(product => ({ slug: product.attributes.slug }));
-  } catch (error) {
-    console.error('Error fetching product slugs:', error);
-    return [];
+    try {
+      const response = await axios.get(`${strapiUrl}/api/products?populate=*`);
+      console.log('Response from Strapi (getProductSlugs):', response.data); //
+      // Asegúrate de devolver la estructura correcta del objeto
+      return response.data.data.map((product) => ({
+        attributes: {
+          slug: product.attributes.slug, 
+        },
+      }));
+    } catch (error) {
+      console.error('Error fetching product slugs:', error);
+      return [];
+    }
   }
-}
 
 export async function getProduct(slug) {
   try {
