@@ -4,18 +4,23 @@ import Price from '../pages/Price';
 
 function ProductCard({ product }) {
   const { slug, title, description, price, image } = product.attributes;
-  const imageNode = image?.data?.[0]?.attributes || {};
+  const imageNode = image && image.data && image.data.length > 0 ? image.data[0].attributes : null;
+  const imageUrl = imageNode ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${imageNode.url}` : '';
+
+  console.log('Product:', product);
+  console.log('Image Node:', imageNode);
+  console.log('Image URL:', imageUrl);
 
   return (
     <Link
       href={`/products/${slug}`}
-      passHref
+      legacyBehavior
     >
       <a className="h-120 w-72 rounded shadow-lg mx-auto border border-palette-lighter">
         <div className="h-72 border-b-2 border-palette-lighter relative">
           {imageNode.url && (
             <Image
-              src={`http://localhost:1337${imageNode.url}`}
+              src={imageUrl}
               alt={imageNode.alternativeText || 'Product Image'}
               layout="fill"
               className="transform duration-500 ease-in-out hover:scale-110"
