@@ -2,8 +2,8 @@ import Head from "next/head";
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
-import ProductListings from "./ProductListing";
-import { getAllProducts } from "./strapi";
+import ProductListings from "../components/ProductListing";
+import { getAllProducts } from "../lib/strapi";
 
 import { benefitOne, benefitTwo } from "../components/data";
 import Video from "../components/video";

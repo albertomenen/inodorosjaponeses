@@ -33,7 +33,7 @@ function ProductForm({ title, handle, variants, setVariantPrice, mainImg }) {
       addToCart({
         productTitle: title,
         productHandle: handle,
-        productImage: mainImg,
+        // productImage: mainImg,
         variantId: varId,
         variantPrice: variant.node.price,
         variantTitle: variant.node.title,

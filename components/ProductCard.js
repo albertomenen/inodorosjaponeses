@@ -1,38 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Price from './Price';
+import Price from '../pages/Price';
 
 function ProductCard({ product }) {
   const { slug, title, description, price, image } = product.attributes;
-
-  console.log('Product:', product); // Agrega este log
-  console.log('Images:', image); // Agrega este log
-
-
-  const imageNode = image && image.data && image.data.length > 0 ? image.data[0].attributes : null;
-  const imageUrl = imageNode ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${imageNode.url}` : '';
-
-  console.log('Product:', product);
-  console.log('Images:', image);
-  console.log('Image Node:', imageNode);
-  console.log('Image URL:', imageUrl);
-
+  const imageNode = image?.data?.[0]?.attributes || {};
 
   return (
-    <Link href={`/products/${slug}`} legacyBehavior>
+    <Link
+      href={`/products/${slug}`}
+      passHref
+    >
       <a className="h-120 w-72 rounded shadow-lg mx-auto border border-palette-lighter">
         <div className="h-72 border-b-2 border-palette-lighter relative">
-          {imageNode ? (
+          {imageNode.url && (
             <Image
-              src={imageUrl}
-              alt={imageNode.altText || 'Product Image'}
-              fill
+              src={`http://localhost:1337${imageNode.url}`}
+              alt={imageNode.alternativeText || 'Product Image'}
+              layout="fill"
               className="transform duration-500 ease-in-out hover:scale-110"
             />
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              <span>No image available</span>
-            </div>
           )}
         </div>
         <div className="h-48 relative">
