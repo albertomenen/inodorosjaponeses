@@ -107,7 +107,7 @@ export default function Footer() {
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
           <a
-            href="https://web3templates.com/"
+            href="https://menendez.dev/"
             target="_blank"
             rel="noopener">
             Alberto Menendez.
