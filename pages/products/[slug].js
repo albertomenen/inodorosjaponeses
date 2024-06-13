@@ -1,5 +1,7 @@
-import { getProductSlugs, getProduct } from '../lib/strapi';
-import ProductSection from '../components/ProductSection';
+// pages/products/[slug].js
+
+import { getProductSlugs, getProduct } from '../../lib/strapi';
+import ProductSection from '../../components/ProductSection';
 
 function ProductPage({ productData }) {
   return (
@@ -11,15 +13,12 @@ function ProductPage({ productData }) {
 
 export async function getStaticPaths() {
   const productSlugs = await getProductSlugs();
-  console.log('Product Slugs:', productSlugs); 
 
   const paths = productSlugs.map((slug) => {
     return {
-      params: { products: slug.slug }, 
+      params: { slug: slug.slug },
     };
   });
-
-  console.log('Paths:', paths); 
 
   return {
     paths,
@@ -28,8 +27,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('Params:', params); // Añade esta línea para depuración
-  const productData = await getProduct(params.products);
+  const productData = await getProduct(params.slug);
+
+  if (!productData) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

@@ -3,7 +3,7 @@ import { useUpdateCartQuantityContext } from '@/context/Store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import Price from '@/components/Price';
+import Price from '../pages/Price';
 import { getCartSubTotal } from '@/utils/helpers';
 
 function CartTable({ cart }) {

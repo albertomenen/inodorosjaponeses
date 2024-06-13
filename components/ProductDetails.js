@@ -1,28 +1,30 @@
-import { useState } from 'react';
-import BackToProductButton from '../pages/BackToProductButton';
-import ProductInfo from '../pages/ProductInfo';
+import React from 'react';
 import ProductForm from './ProductForm';
+import { getProductBySlug } from '../utils/api';
 
-function ProductDetails({ productData }) {
-  const { attributes } = productData;
-  const { title, description, price, image } = attributes;
-  const mainImg = image.data[0].attributes;
-  const mainImgUrl = `http://127.0.0.1:1337${mainImg.url}`;
+const ProductDetails = ({ product }) => {
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
-  return (
-    <div className="flex flex-col justify-between h-full w-full md:w-1/2 max-w-xs mx-auto space-y-4 min-h-128">
-      <BackToProductButton />
-      <ProductInfo 
-        title={title}
-        description={description}
-        price={price}
-      />
-      <ProductForm 
-        title={title}
-        mainImg={{ url: mainImgUrl, altText: mainImg.alternativeText || title }}
-      />
-    </div>
-  );
+  return <ProductForm product={product} />;
+};
+
+export async function getStaticPaths() {
+  const paths = await getAllProductSlugs();
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const product = await getProductBySlug(params.slug);
+  return {
+    props: {
+      product: product || null,
+    },
+  };
 }
 
 export default ProductDetails;
