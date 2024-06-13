@@ -27,14 +27,12 @@ export default function Footer() {
                       height="32"
                       className="w-8"
                     />
-                  <span>Nextly</span>
+                  <span>Inodoros Japoneses</span>
               </Link>
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Nextly is a free landing page & marketing website
-              template for startups and indie projects. Its built with
-              Next.js & TailwindCSS. And its completely open-source.
+              Esta pagina esta creada para propositos comerciales de baño y caca
             </div>
 
             <div className="mt-5">
@@ -112,14 +110,14 @@ export default function Footer() {
             href="https://web3templates.com/"
             target="_blank"
             rel="noopener">
-            Web3Templates.
+            Alberto Menendez.
           </a>{" "}
           Illustrations from{" "}
           <a
             href="https://www.glazestock.com/"
             target="_blank"
             rel="noopener ">
-            Glazestock
+            Glazestock and other places opensource
           </a>
         </div>
       </Container>
@@ -152,7 +150,7 @@ const Facebook = ({ size = 24 }) => (
 );
 const Instagram = ({ size = 24 }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.menendez.dev"
     width={size}
     height={size}
     viewBox="0 0 24 24"
@@ -163,7 +161,7 @@ const Instagram = ({ size = 24 }) => (
 
 const Linkedin = ({ size = 24 }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.menendez.dev"
     width={size}
     height={size}
     viewBox="0 0 24 24"
@@ -175,7 +173,7 @@ const Linkedin = ({ size = 24 }) => (
 const Backlink = () => {
   return (
     <a
-      href="https://web3templates.com"
+      href="https://i.pinimg.com/1200x/79/d7/f3/79d7f36635485171e3cb80e5207dba29.jpg"
       target="_blank"
       rel="noopener"
       className="absolute flex px-3 py-1 space-x-2 text-sm font-semibold text-gray-900 bg-white border border-gray-300 rounded shadow-sm place-items-center left-5 bottom-5 dark:bg-trueGray-900 dark:border-trueGray-700 dark:text-trueGray-300">
@@ -185,7 +183,7 @@ const Backlink = () => {
         viewBox="0 0 30 30"
         fill="none"
         className="w-4 h-4"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nbcnews.com%2Fnews%2Fus-news%2Fohio-gorilla-exhibit-where-harambe-was-shot-dead-gets-remodel-n762751&psig=AOvVaw2j971dRBh5V-iwCfmAX8hK&ust=1718381269586000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMC145v72IYDFQAAAAAdAAAAABAJ">
         <rect
           width="30"
           height="29.5385"
